@@ -24,7 +24,7 @@ gamsel <- function(x, y,
   
   if (any(unique_perfeat < 4) && failsafe) {
     warning("Feature with less than 4 unique values found, returning glm")
-    return(glm.fit(x, y))
+    return(glm(y ~ data.matrix(x)))
   }
   
   if (trace > 1) cat(".: Unique vals per feat:", unique_perfeat, "\n")
