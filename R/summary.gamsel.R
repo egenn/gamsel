@@ -1,6 +1,4 @@
-summary.gamsel <-
-  function (object, label=FALSE,...) 
-{
+summary.gamsel <- function (object, label = FALSE, ...) {
   alphas=object$alphas
   betas=object$betas
   p=dim(alphas)[1]
@@ -38,11 +36,15 @@ summary.gamsel <-
   betamax=max(nbeta)
   plot(0, type = "n", xlab = expression(lambda), ylab = expression(paste("||",beta,"||")), 
        xlim = c(lambda.max * 1.05, lambda.min * (0.9-.1*label)), ylim = c(0,1.05 * betamax), main = "Non-linear Components",  log = "x")
-  abline(h=0,lty=3)
+  abline(h = 0,lty = 3)
   for (j in 1:maxvars) {
     nzlines(lambda,nbeta[j,], col = colours[j], lwd = 2, type = "l", pch = "")
         
   }
-  if(label)text(rep(lambda.min*.85,maxvars),nbeta[,length(lambda)],labels=seq(maxvars),col=colours,cex=0.6)
+  if (label) {
+    text(rep(lambda.min*.85,maxvars),
+         nbeta[,length(lambda)],
+         labels = seq(maxvars), col = colours, cex = 0.6)
+  }
 
 }

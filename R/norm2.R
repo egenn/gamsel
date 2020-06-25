@@ -1,3 +1,1 @@
-norm2 <-
-  function (x) 
-  sqrt(sum(x^2))
+norm2 <- function(x) sqrt(sum(x^2))
