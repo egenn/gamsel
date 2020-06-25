@@ -1,17 +1,14 @@
 Package: gamsel
 Type: Package
 Title: Fit Regularization Path for Generalized Additive Models
-Version: 1.8-1
-Date: 2018-03-31
+Version: 1.8-2
+Date: 2020-06-25
 Author: Alexandra Chouldechova [aut, cre],
 	Trevor Hastie [aut, cre],
 	Vitalie Spinu [ctb]
-Maintainer: Trevor Hastie <hastie@stanford.edu>
+Maintainer: Efstathios (Stathis) D. Gennatas <gennatas@stanford.edu>
 Description: Using overlap grouped-lasso penalties, 'gamsel' selects whether a term in a 'gam' is nonzero, linear, or a non-linear spline (up to a specified max df per variable). It fits the entire regularization path on a grid of values for the overall penalty lambda, both for gaussian and binomial families.
 License: GPL-2
 Depends: foreach, mda
 URL: http://arxiv.org/abs/1506.03850
 NeedsCompilation: yes
-Packaged: 2018-04-01 01:51:22 UTC; hastie
-Repository: CRAN
-Date/Publication: 2018-04-01 03:23:38 UTC
