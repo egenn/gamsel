@@ -1,6 +1,7 @@
 # Generalized Additive Model Selection
 
-a fork by [EDG](https://egenn.github.io)
+a fork by [EDG](https://egenn.github.io)  
+***work in progress***
 
 Reference: [Chouldechova A and Hastie T, 2015](https://arxiv.org/abs/1506.03850)
 
