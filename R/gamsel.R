@@ -45,7 +45,7 @@ gamsel <- function(x, y,
   
   # /
     
-  this.call <- match.call()
+  # this.call <- match.call()
   family <- match.arg(family)
   family_id <- as.integer(ifelse(family == "gaussian", 0, 1))
   # n <- length(y)
@@ -84,7 +84,7 @@ gamsel <- function(x, y,
   out$parms <- parms
   out$family <- family
   out <- c(out, fracdev(U, y, out$alphas, out$betas, out$intercept, degrees, family))
-  out$call <- this.call
+  # out$call <- this.call
   class(out) <- "gamsel"
   out
 }
