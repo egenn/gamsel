@@ -32,7 +32,7 @@ int updateAlpha(int j, int *n, double *y, double *x, double *fit, double *lambda
 /** Update beta value */
 int updateBeta(int j, int *n, double *y, double *U, double *fit, double *lambdas, double *lambdas_alpha, double *psis, double *D, int *degrees, int *cum_degrees, double *betas, double *alphas, double *z, int *family);
 
-/** Carry out line search  to determine ||theta|| */
+/** Carry out line search to determine ||theta|| */
 double lineSearch(double m, double *D, double *Vr, double lambda);
 
 #endif /** GAMSEL_H */

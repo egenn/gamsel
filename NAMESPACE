@@ -1,4 +1,4 @@
-useDynLib("gamsel", .registration = TRUE)
+useDynLib("gamsel2", .registration = TRUE)
 importFrom(utils,head,tail,packageDescription)
 importFrom("grDevices", "rainbow")
 importFrom("graphics", "abline", "axis", "lines", "plot", "points","rug", "segments", "text")

@@ -5,7 +5,7 @@
 #include <math.h>
 #include <R_ext/BLAS.h>
 #include <stdlib.h>
-#include "gamsel.h"
+#include "gamsel2.h"
 #include <R_ext/Rdynload.h>
 
 static const double one = 1.0;
