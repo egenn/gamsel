@@ -8,8 +8,8 @@
 #include "gamsel.h"
 #include <R_ext/Rdynload.h>
 
-static const double one=1.0;
-static const double zero=0.0;
+static const double one = 1.0;
+static const double zero = 0.0;
 static const int inc_one = 1;
 static const double EPS = 1e-4;
 // static const double SCALE_FACTOR = 0.9;
