@@ -42,7 +42,7 @@
 #' lambda value. Default is 2000.
 #' @param traceit If \code{TRUE}, various information is printed during the fitting process.
 #' @param parallel passed on to the pseudo.bases() function. Uses multiple process if available.
-#' @param failsafe 
+#' @param failsafe Logical: If TRUE, 
 #' @param trace 
 #' @param ... additional arguments passed on to \code{pseudo.bases()}
 #' @return
@@ -84,28 +84,29 @@ gamsel <- function(x, y,
                    dfs = NULL,
                    min.df = 1,
                    max.df = 5,
+                   min.unique.perfeat = 4,
                    bases = pseudo.bases(x, degrees, dfs, parallel = parallel, ...),
                    tol = 1e-04,
                    max_iter = 2000, traceit = FALSE, parallel = FALSE,
                    failsafe = TRUE,
-                   failsafe.args = list(learner = "s.GLMNET", 
+                   failsafe.args = list(learner = "glmnet::glmnet", 
                                         family = family,
                                         alpha = 1,
-                                        lambda = NULL),
+                                        lambda = .1),
                    trace = 0, ...) {
   
   # delta
   n.features <- NCOL(x)
   unique_perfeat <- apply(x, 2, function(i) length(unique(i)))
   
-  if (any(unique_perfeat < 4) && failsafe) {
+  if (any(unique_perfeat < min.unique.perfeat) && failsafe) {
     warning("Failsafe on: Feature with less than 4 unique values found, returning glmnet")
-    learner <- failsafe.args[[1]]
+    learner <- strsplit(failsafe.args[[1]], "::")
+    .learner <- getFromNamespace(learner[2], learner[1])
     failsafe.args[[1]] <- NULL
     .failsafe.args <- c(list(x = x, y = y),
-                       failsafe.args
-                       )
-    return(do.call(learner, .failsafe.args))
+                       failsafe.args)
+    return(do.call(.learner, .failsafe.args))
   }
   
   if (trace > 1) cat(".: Unique vals per feat:", unique_perfeat, "\n")
