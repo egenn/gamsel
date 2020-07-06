@@ -84,7 +84,7 @@ gamsel <- function(x, y,
                    dfs = NULL,
                    min.df = 1,
                    max.df = 5,
-                   bases = pseudo.bases(x,degrees, dfs, parallel = parallel, ...),
+                   bases = pseudo.bases(x, degrees, dfs, parallel = parallel, ...),
                    tol = 1e-04,
                    max_iter = 2000, traceit = FALSE, parallel = FALSE,
                    failsafe = TRUE,
@@ -102,7 +102,10 @@ gamsel <- function(x, y,
     warning("Failsafe on: Feature with less than 4 unique values found, returning glmnet")
     learner <- failsafe.args[[1]]
     failsafe.args[[1]] <- NULL
-    return(do.call(learner, failsafe.args))
+    .failsafe.args <- c(list(x = x, y = y),
+                       failsafe.args
+                       )
+    return(do.call(learner, .failsafe.args))
   }
   
   if (trace > 1) cat(".: Unique vals per feat:", unique_perfeat, "\n")
