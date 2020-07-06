@@ -89,9 +89,10 @@ gamsel <- function(x, y,
                    tol = 1e-04,
                    max_iter = 2000, traceit = FALSE, parallel = FALSE,
                    failsafe = TRUE,
-                   failsafe.args = list(learner = "glmnet::glmnet",
+                   failsafe.args = list(learner = "rtemis::s.GLMNET",
                                         alpha = 1,
-                                        lambda = .1),
+                                        lambda = .1,
+                                        verbose = FALSE),
                    trace = 0, ...) {
   
   # delta
