@@ -101,7 +101,7 @@ gamsel <- function(x, y,
   
   if (any(unique_perfeat < min.unique.perfeat) && failsafe) {
     warning("Failsafe on: Feature with less than 4 unique values found, returning glmnet")
-    learner <- strsplit(failsafe.args[[1]], "::")
+    learner <- strsplit(failsafe.args[[1]], "::")[[1]]
     .learner <- getFromNamespace(learner[2], learner[1])
     failsafe.args[[1]] <- NULL
     .failsafe.args <- c(list(x = x, y = y),
