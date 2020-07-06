@@ -89,8 +89,7 @@ gamsel <- function(x, y,
                    tol = 1e-04,
                    max_iter = 2000, traceit = FALSE, parallel = FALSE,
                    failsafe = TRUE,
-                   failsafe.args = list(learner = "glmnet::glmnet", 
-                                        family = family,
+                   failsafe.args = list(learner = "glmnet::glmnet",
                                         alpha = 1,
                                         lambda = .1),
                    trace = 0, ...) {
@@ -104,7 +103,7 @@ gamsel <- function(x, y,
     learner <- strsplit(failsafe.args[[1]], "::")[[1]]
     .learner <- getFromNamespace(learner[2], learner[1])
     failsafe.args[[1]] <- NULL
-    .failsafe.args <- c(list(x = x, y = y),
+    .failsafe.args <- c(list(x = data.matrix(x), y = y),
                        failsafe.args)
     return(do.call(.learner, .failsafe.args))
   }
