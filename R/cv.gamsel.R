@@ -6,6 +6,7 @@ cv.gamsel <- function(x, y,
                       min.degree = 1,
                       max.degree = 8,
                       # dfs = rep(5, p),
+                      failsafe = TRUE,
                       dfs = NULL,
                       min.df = 1,
                       max.df = 5,
@@ -38,10 +39,8 @@ cv.gamsel <- function(x, y,
   unique_perfeat <- apply(x, 2, function(i) length(unique(i)))
   
   if (any(unique_perfeat < 4) && failsafe) {
+    # Consider having gamsel output gamsel object even when failsafe trigerred
     warning("Feature with less than 4 unique values found")
-    # learner <- failsafe.args[[1]]
-    # failsafe.args[[1]] <- NULL
-    # return(do.call(learner, failsafe.args))
   }
   
   if (trace > 1) cat(".: Unique vals per feat:", unique_perfeat, "\n")
@@ -65,7 +64,8 @@ cv.gamsel <- function(x, y,
   gamsel.object <- gamsel(x, y,
                           lambda = lambda,
                           bases = bases,
-                          family = family, 
+                          family = family,
+                          failsafe = failsafe,
                          ...)
   lambda <- gamsel.object$lambda
   if (missing(foldid)) 
